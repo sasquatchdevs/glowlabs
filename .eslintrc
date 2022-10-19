@@ -1,0 +1,71 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "extends": [
+    "airbnb",
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-shadow": "error",
+    "no-template-curly-in-string": "warn",
+    "no-param-reassign": "warn",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "spaced-comment": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/function-component-definition": [
+      "error", {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".jsx", ".tsx"] }
+    ],
+    "react/jsx-props-no-spreading": [
+      "warn",
+      {
+        "html": "ignore"
+      }
+    ],
+    "react/require-default-props": "off",
+    "react/no-array-index-key": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"recommendations": [
+		"usernamehw.errorlens",
+		"dsznajder.es7-react-js-snippets",
+		"dbaeumer.vscode-eslint",
+		"heybourn.headwind",
+		"esbenp.prettier-vscode",
+		"Prisma.prisma",
+		"bradlc.vscode-tailwindcss",
+		"BriteSnow.vscode-toggle-quotes",
+		"styled-components.vscode-styled-components"
+	]
+}
