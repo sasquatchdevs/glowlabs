@@ -40,5 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 .fleet
 .idea
-/prisma/glowlabs_db.sqlite
-/prisma/glowlabs_db.*-journal
+/prisma/*.sqlite*
