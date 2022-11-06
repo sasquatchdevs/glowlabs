@@ -12,5 +12,8 @@
       "tw`([^`]*)", // tw`...`
       "tw\\.[^`]+`([^`]*)`", // tw.xxx<xxx>`...`
       "tw\\(.*?\\).*?`([^`]*)" // tw(Component)<xxx>`...`
-  ]
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -7,9 +7,9 @@ import { authOptions as nextAuthOptions } from '~/pages/api/auth/[...nextauth]'
 
 // Next API route example - /pages/api/restricted.ts
 export const getServerAuthSession = async (ctx: {
-  req: GetServerSidePropsContext['req']
-  res: GetServerSidePropsContext['res']
+	req: GetServerSidePropsContext['req']
+	res: GetServerSidePropsContext['res']
 }) => {
-  // eslint-disable-next-line no-return-await
-  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions)
+	// eslint-disable-next-line no-return-await
+	return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions)
 }
