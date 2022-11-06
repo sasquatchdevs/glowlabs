@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Error from 'next/error'
 
 import { getSquareServices } from '~/server/api/square/getServices'
+import { getSquareSubscriptions } from '~/server/api/square/getSubscriptions'
 
 // eslint-disable-next-line no-shadow
 export enum ApiMethods {
@@ -22,8 +23,14 @@ export default async function squareApiHandler(
 	switch (_req.url?.split('/')[3]) {
 		case 'getServices':
 			if (_req.method === ApiMethods.GET) {
-				const catalogItems = await getSquareServices()
-				return _res.status(200).json(catalogItems)
+				const bookableServices = await getSquareServices()
+				return _res.status(200).json(bookableServices ?? [])
+			}
+			return _res.status(404).json('method not allowed')
+		case 'getSubscriptions':
+			if (_req.method === ApiMethods.GET) {
+				const subscriptionPlans = await getSquareSubscriptions()
+				return _res.status(200).json(subscriptionPlans ?? [])
 			}
 			return _res.status(404).json('method not allowed')
 		default:
