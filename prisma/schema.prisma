@@ -69,3 +69,10 @@ model user_roles {
 
   @@id([roleId, userId])
 }
+
+model unregisteredSquareUser {
+  id               Int      @id @default(autoincrement())
+  emailHash        String
+  squareCustomerId String   @unique
+  createdAt        DateTime
+}
