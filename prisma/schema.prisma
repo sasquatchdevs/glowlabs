@@ -74,5 +74,5 @@ model unregisteredSquareUser {
   id               Int      @id @default(autoincrement())
   emailHash        String
   squareCustomerId String   @unique
-  createdAt        DateTime
+  createdAt        DateTime @default(now())
 }
