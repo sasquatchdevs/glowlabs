@@ -1,16 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-  // Further reading:
-  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
   url      = env("DATABASE_URL")
 }
 
@@ -49,12 +42,30 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model role {
+  id          String @id @default(cuid())
+  name        String @unique
+  description String
+}
+
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+  id               String    @id @default(cuid())
+  name             String? // @db.Text
+  email            String?   @unique // @db.Text
+  emailVerified    DateTime? // @db.Text
+  image            String? // @db.Text
+  firstName        String
+  lastName         String
+  phoneNumber      String? // @db.Text
+  squareCustomerId String? // @db.Text
+  roleId           Int
+  accounts         Account[]
+  sessions         Session[]
+}
+
+model user_roles {
+  roleId Int
+  userId Int
+
+  @@id([roleId, userId])
 }
