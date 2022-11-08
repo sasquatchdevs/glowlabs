@@ -30,7 +30,9 @@ const CreateCustomer = () => {
 			setApiRes(`Square Customer Id:: ${customerId}`)
 			reset()
 		} catch (error) {
-			console.log(error)
+			if (error instanceof Error) {
+				reportError(error)
+			}
 		}
 	}
 	return (

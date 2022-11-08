@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Subscription } from 'square'
 
-// import formatMoney from '~/utils/formatMoney'
+import { reportError } from '~/utils/errors'
 import { trpc } from '~/utils/trpc'
 
 interface FormData {
@@ -33,7 +33,9 @@ const CreatePaidSubscription = () => {
 			setApiRes(subscription)
 			reset()
 		} catch (error) {
-			console.log(error)
+			if (error instanceof Error) {
+				reportError(error)
+			}
 		}
 	}
 	return (
@@ -65,7 +67,14 @@ const CreatePaidSubscription = () => {
 								Submit
 							</button>
 						</form>
-						<div>{JSON.stringify(apiRes, null, 4)}</div>
+						<dl>
+							<dt className="font-semibold">Subscription Id:</dt>
+							<dd>{apiRes?.id}</dd>
+							<dt className="font-semibold">Started on:</dt>
+							<dd>{apiRes?.startDate}</dd>
+							<dt className="font-semibold">Active?</dt>
+							<dd>{apiRes?.status}</dd>
+						</dl>
 					</>
 				)}
 			</div>

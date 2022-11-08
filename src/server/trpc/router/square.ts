@@ -1,7 +1,11 @@
 /* eslint-disable no-console */
+import crypto from 'node:crypto'
+
 import { Prisma } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import * as bcrypt from 'bcrypt'
+import JSONbig from 'json-bigint'
+import { Subscription } from 'square'
 import { z } from 'zod'
 
 import { env } from '~/env/server.mjs'
@@ -128,17 +132,24 @@ export const squareRouter = router({
 
 				// create subscription using customerInfo
 				const {
-					result: { subscription },
+					result: { subscription, errors },
 				} = await squareClient.subscriptionsApi.createSubscription({
 					idempotencyKey,
 					locationId,
 					planId: input.planId,
 					customerId: input.customerId,
 				})
+				if (errors?.length) {
+					console.log(errors)
+					throw new Error(errors[0]?.detail)
+				}
 
 				console.log('Created subscription:: ', subscription)
+				const parsedSubscription = JSONbig.parse(JSONbig.stringify(subscription)) as
+					| Subscription
+					| undefined
 				// square will send an invoice to the customer's email for payment
-				return subscription
+				return parsedSubscription
 			} catch (error) {
 				throw new TRPCError({
 					code: 'INTERNAL_SERVER_ERROR',
