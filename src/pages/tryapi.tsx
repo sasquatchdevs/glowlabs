@@ -1,5 +1,6 @@
 import React from 'react'
 
+import CreateNewsletterSignUp from '~/components/exp/CreateNewsletterSignup'
 import ShowServices from '~/components/exp/ShowServices'
 import ShowSubscriptions from '~/components/exp/ShowSubscriptions'
 
@@ -9,6 +10,7 @@ const TryApis = () => {
 			TryApis
 			<ShowServices />
 			<ShowSubscriptions />
+			<CreateNewsletterSignUp />
 		</div>
 	)
 }
