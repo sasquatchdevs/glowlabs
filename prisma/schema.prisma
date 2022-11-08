@@ -76,3 +76,9 @@ model unregisteredSquareUser {
   squareCustomerId String   @unique
   createdAt        DateTime @default(now())
 }
+
+model NewsletterSignUps {
+  id        String   @id @default(cuid())
+  email     String
+  createdAt DateTime @default(now())
+}

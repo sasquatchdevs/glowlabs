@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import crypto from 'node:crypto'
 
-import { Prisma } from '@prisma/client'
+import { NewsletterSignUps, Prisma } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import * as bcrypt from 'bcrypt'
 import JSONbig from 'json-bigint'
@@ -41,6 +41,39 @@ export const squareRouter = router({
 			})
 		}
 	}),
+	addEmailToNewsletter: publicProcedure
+		.input(
+			z
+				.object({
+					email: z.string().email(),
+				})
+				.required(),
+		)
+		.mutation(async ({ ctx, input }) => {
+			try {
+				// find if user is already enrolled
+				const foundEmail: NewsletterSignUps | null =
+					await ctx.prisma.newsletterSignUps.findFirst({
+						where: { email: input.email },
+					})
+				if (foundEmail) {
+					return foundEmail?.id
+				}
+				const newsletterSignUp: NewsletterSignUps =
+					await ctx.prisma.newsletterSignUps.create({
+						data: {
+							email: input.email,
+						},
+					})
+				return newsletterSignUp?.id
+			} catch (error) {
+				throw new TRPCError({
+					code: 'INTERNAL_SERVER_ERROR',
+					message: 'An unexpected error occurred, please try again later.',
+					cause: error,
+				})
+			}
+		}),
 	createNewSquareCustomer: publicProcedure
 		.input(
 			z
