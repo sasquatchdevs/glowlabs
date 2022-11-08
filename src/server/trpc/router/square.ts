@@ -41,6 +41,14 @@ export const squareRouter = router({
 		)
 		.mutation(async ({ ctx, input }) => {
 			try {
+				// find if user is already enrolled
+				const foundEmail: NewsletterSignUps | null =
+					await ctx.prisma.newsletterSignUps.findFirst({
+						where: { email: input.email },
+					})
+				if (foundEmail) {
+					return foundEmail?.id
+				}
 				const newsletterSignUp: NewsletterSignUps =
 					await ctx.prisma.newsletterSignUps.create({
 						data: {
