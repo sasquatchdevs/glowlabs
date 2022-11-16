@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .anchorHov:hover {
+    font-weight: 550;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: #85a3b336;
+    height: 5px;
+    transition-timing-function: ease-out;
+    transition-duration: 0.2s;
+    /* transform-origin: left;
+    transform: scaleX(0);
+    transition-timing-function: cubic-bezier(0.39, 0.1, 0, 0.98);
+    transition-delay: 0s;
+    transition-property: all; */
+  }
+  nav-scroll {
+    background-color: #fff;
+    color: #405861;
+  }
+  reg-nav {
+    background-color: transparent;
+    color: white;
+  }
+
+}
