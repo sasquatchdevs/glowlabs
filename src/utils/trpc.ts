@@ -1,7 +1,6 @@
 // src/utils/trpc.ts
 import { httpBatchLink, loggerLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
-// @ts-expect-error NO EXPORTED MEMBER
 import { type GetInferenceHelpers } from '@trpc/server'
 import superjson from 'superjson'
 
