@@ -15,7 +15,7 @@ const CustomerWellbeing = () => {
 									className="block h-full w-full object-cover"
 								/>
 							</div>
-							<div className="relative inline-flex w-full flex-col justify-center pt-32 pb-11 lg:py-10 lg:px-11 ">
+							<div className="relative inline-flex w-full flex-col justify-center px-8 pt-32 pb-11 lg:py-10 lg:px-11">
 								<div className="relative">
 									<span className="mt-1 transform-none p-0 font-medium uppercase leading-5 tracking-wider text-brand-textCaptions">
 										EXTRAORDINARY
