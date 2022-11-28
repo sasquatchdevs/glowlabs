@@ -2,6 +2,8 @@
 import type { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import type { AppType } from 'next/app'
+import '@fontsource/cormorant-garamond'
+import '@fontsource/open-sans'
 
 import '~/styles/globals.css'
 import { trpc } from '~/utils/trpc'
