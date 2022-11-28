@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
+import CustomerWellbeing from '~/feature/landing/CustomerWellbeing'
 import ServicesOverView from '~/feature/landing/ServicesOverView'
 
 const Home: NextPage = () => {
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
 			</Head>
 			<main className="my-36">
 				<ServicesOverView />
+				<CustomerWellbeing />
 			</main>
 		</>
 	)
